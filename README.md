@@ -2,8 +2,8 @@
 Project repo for SAD AT70.18
 
 ## Team member names
-Cedric Le Mercier - st122004
-Titouan Le Mao - st122014
+* Cedric Le Mercier - st122004
+* Titouan Le Mao - st122014
 
 ## Project Topic
 An MVC-based REST API and Web App
