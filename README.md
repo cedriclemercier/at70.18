@@ -22,7 +22,22 @@ Titouan Le Mao - Back End- Documentation
 Every Friday 3pm
 
 ## Timetables
-// TODO
+
+Look the milestones in the repository
 
 ## Progress
 * 26/02/2021 - Project requirements and UI mockups
+
+Look the milestones in the repository
+
+## ADD
+
+- Deep requirements about architectural implications
+- Where and how will we store data - relational or nosql and why? How long we will keep and why?
+- What if two person edit at the same time and why?
+- Risk and mitigation plan 
+- How do I know that the requirement is successful ? Acceptance criteria
+- What are architectural implications? Use case should give technical implications,
+- Make sure to discuss **what will NOT be implemented**
+- Who will do what?
+- Big picture architecture - Discuss architectural tradeoffs against quality attribute analysis.
