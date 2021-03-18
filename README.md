@@ -38,6 +38,6 @@ Look the milestones in the repository
 - Risk and mitigation plan 
 - How do I know that the requirement is successful ? Acceptance criteria
 - What are architectural implications? Use case should give technical implications,
-- Make sure to discuss **what will NOT be implemented**
+- Make sure to discuss **what will NOT be implemented** (The payment process)
 - Who will do what?
 - Big picture architecture - Discuss architectural tradeoffs against quality attribute analysis.
