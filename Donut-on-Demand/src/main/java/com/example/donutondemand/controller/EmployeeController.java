@@ -1,10 +1,12 @@
 package com.example.donutondemand.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.donutondemand.model.Employee;
@@ -15,12 +17,16 @@ import com.example.donutondemand.service.EmployeeService;
 public class EmployeeController {
 
 	@Autowired
-	private EmployeeService userService;
+	private EmployeeService employeeService;
 	
 	@RequestMapping(path = "/homeEmployee")
 	public ModelAndView employeeDashboard(Principal principal) {
+		
 		ModelAndView mv = new ModelAndView("homeEmployee.jsp");
-		Employee e = userService.findByUsername(principal.getName());
+		List<Employee> employees = employeeService.findAllEmployees();
+		mv.addObject("employees" , employees);
+		
+		Employee e = employeeService.findByUsername(principal.getName());
 		mv.addObject("employee", e);
 
 			if( e.getRole().getName().equalsIgnoreCase("ROLE_MANAGER")){

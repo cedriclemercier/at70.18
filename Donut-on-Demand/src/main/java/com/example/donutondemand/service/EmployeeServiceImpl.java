@@ -1,5 +1,7 @@
 package com.example.donutondemand.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.mail.MailException;
@@ -47,6 +49,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public Employee findByUsername(String username) {
 		return employeeDao.findByUsername(username);
+	}
+
+	@Override
+	public List<Employee> findAllEmployees() {
+		return employeeDao.findAll();
 	}
 
 }
