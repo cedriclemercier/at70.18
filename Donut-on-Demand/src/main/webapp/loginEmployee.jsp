@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Employee account</title>
 </head>
 <body>
 	<h1>Login</h1>
@@ -13,7 +13,7 @@
 	<form action="/login" method="POST">
 		<table>
 			<tr>
-				<td>User:</td>
+				<td>Employee:</td>
 				<td><Input type="text" name="username" value=''></td>
 			<tr>
 			<tr>
@@ -25,6 +25,5 @@
 			<tr>
 		</table>
 	</form>
-	<a href="/register">register</a>
 </body>
 </html>

@@ -1,10 +1,5 @@
 package com.example.donutondemand.model;
 
-import java.util.Set;
-
-
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +17,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class User {
+public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

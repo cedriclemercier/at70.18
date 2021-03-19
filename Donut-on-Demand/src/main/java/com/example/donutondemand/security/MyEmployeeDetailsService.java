@@ -7,25 +7,25 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.donutondemand.dao.UserJPADao;
-import com.example.donutondemand.model.User;
+import com.example.donutondemand.dao.EmployeeJPADao;
+import com.example.donutondemand.model.Employee;
 
 @Service
-public class MyUserDetailsService implements UserDetailsService{
+public class MyEmployeeDetailsService implements UserDetailsService{
 
 	@Autowired
-	UserJPADao userDao;
+	EmployeeJPADao employeeDao;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		User user = userDao.findByUsername(username);
+		Employee employee = employeeDao.findByUsername(username);
 		
-		if(user==null) {
-			throw new UsernameNotFoundException("User 404");
+		if(employee==null) {
+			throw new UsernameNotFoundException("Employee 404");
 		}
 		
-		return new UserDetailsImpl(user);
+		return new EmployeeDetailsImpl(employee);
 	}
 
 }

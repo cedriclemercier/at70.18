@@ -12,11 +12,11 @@
 }
 </style>
 <meta charset="ISO-8859-1">
-<title>Registration</title>
+<title>Creation</title>
 </head>
 <body>
-	<h1>Register</h1>
-	<form:form method="POST" modelAttribute="user">
+	<h1>Create new employee</h1>
+	<form:form method="POST" modelAttribute="employee">
 		<spring:bind path="username">
 			<div>
 				<form:input type="text" path="username" class="form-control"
@@ -51,18 +51,18 @@
 			<div>
 				Roles :<br/>
 				<form:radiobutton path="role" value="1" />
-				ROLE_ADMIN<br/>
+				ROLE_MANAGER<br/>
 				
 				<form:radiobutton path="role" value="2" />
-				ROLE_USER<br/>
+				ROLE_CASHIER<br/>
 				
 				<form:radiobutton path="role" value="3" />
-				ROLE_PREMIUM_USER<br/>
+				ROLE_ORDER_SUPERVISOR<br/>
+				
 			</div>
 		</spring:bind>
 
 		<Input type="submit" name="submit" value="submit">
-		</td>
 	</form:form>
 </body>
 </html>

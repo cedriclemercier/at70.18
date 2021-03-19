@@ -9,38 +9,38 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.donutondemand.model.User;
+import com.example.donutondemand.model.Employee;
 
-public class UserDetailsImpl implements UserDetails{
+public class EmployeeDetailsImpl implements UserDetails{
 
-	private User user;
+	private Employee employee;
 	
-	public UserDetailsImpl(User user) {
-		this.user = user;
+	public EmployeeDetailsImpl(Employee employee) {
+		this.employee = employee;
 	}
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set < GrantedAuthority > grantedAuthorities = new HashSet<>();
 		
-		grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().getName()));
+		grantedAuthorities.add(new SimpleGrantedAuthority(employee.getRole().getName()));
 		
 		return grantedAuthorities;
 	}
 	
 	public int getID() {
-		return user.getId();
+		return employee.getId();
 	}
 
 
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return employee.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		return user.getUsername();
+		return employee.getUsername();
 	}
 
 	@Override

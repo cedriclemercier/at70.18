@@ -7,40 +7,40 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.example.donutondemand.model.User;
-import com.example.donutondemand.service.UserService;
+import com.example.donutondemand.model.Employee;
+import com.example.donutondemand.service.EmployeeService;
 
 @Component
-public class UserValidator implements Validator {
+public class EmployeeValidator implements Validator {
 
 	@Autowired
-	private UserService userService;
+	private EmployeeService employeeService;
 	
 	
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return User.class.equals(clazz);
+		return Employee.class.equals(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		User user = (User) target;
+		Employee employee = (Employee) target;
 		
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
-		if (user.getUsername().length() < 6 || user.getUsername().length() > 32) {
+		if (employee.getUsername().length() < 6 || employee.getUsername().length() > 32) {
 			errors.rejectValue("username", "size.user.username");
         }
-        if (userService.findByUsername(user.getUsername()) != null) {
+        if (employeeService.findByUsername(employee.getUsername()) != null) {
             errors.rejectValue("username", "duplicate.user.username");
         }
         
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-        if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
+        if (employee.getPassword().length() < 8 || employee.getPassword().length() > 32) {
             errors.rejectValue("password", "size.user.password");
         }
 
-        if (!user.getPasswordConfirm().equals(user.getPassword())) {
+        if (!employee.getPasswordConfirm().equals(employee.getPassword())) {
             errors.rejectValue("passwordConfirm", "diff.user.passwordConfirm");
         }		
 	}
