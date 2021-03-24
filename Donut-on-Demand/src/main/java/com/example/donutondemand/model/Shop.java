@@ -1,6 +1,7 @@
 package com.example.donutondemand.model;
 
 import java.time.LocalTime;
+
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,12 +15,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.example.donutondemand.converter.LocalTimeJpaConverter;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 public class Shop {
 
@@ -43,9 +47,11 @@ public class Shop {
     private LocalTime closingTime;
        
     @OneToMany(mappedBy = "shopE", fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Employee> employees;
     
     @OneToMany(mappedBy = "shopO", fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Order> purchasedOrders;
 	
 }

@@ -1,6 +1,7 @@
 package com.example.donutondemand.model;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -42,7 +44,7 @@ public class Employee {
 	private boolean active;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JsonBackReference 
+	@JsonBackReference
 	private Role role;
 	
 	@ManyToOne(fetch=FetchType.EAGER)

@@ -18,11 +18,15 @@ import com.example.donutondemand.converter.DoughJpaConverter;
 import com.example.donutondemand.converter.FlavorJpaConverter;
 import com.example.donutondemand.converter.MixJpaConverter;
 import com.example.donutondemand.converter.ToppingJpaConverter;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Setter
+@Getter
 public class DonutRecipe {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,6 +64,7 @@ public class DonutRecipe {
     private double price;
 	
 	@OneToMany(mappedBy = "donut")
+	@JsonManagedReference
 	private Set<OrderLine> orderLines;
 	
 	

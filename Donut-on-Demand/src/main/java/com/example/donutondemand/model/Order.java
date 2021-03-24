@@ -26,6 +26,7 @@ import javax.persistence.Table;
 import com.example.donutondemand.converter.LocalDateTimeJpaConverter;
 import com.example.donutondemand.converter.StatusJpaConverter;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -54,6 +55,7 @@ public class Order {
 	private Customer customer;
 
 	@OneToMany(mappedBy = "order")
+	@JsonManagedReference
 	private Set<OrderLine> orderLines;
 		
 	@Column(nullable = false)
