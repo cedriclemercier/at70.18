@@ -45,5 +45,9 @@ public class Employee {
 	@JsonBackReference 
 	private Role role;
 	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JsonBackReference 
+	private Shop shopE;
+	
 
 }

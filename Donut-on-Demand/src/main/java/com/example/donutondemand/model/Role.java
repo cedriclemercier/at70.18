@@ -12,14 +12,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "role")
 public class Role {
 

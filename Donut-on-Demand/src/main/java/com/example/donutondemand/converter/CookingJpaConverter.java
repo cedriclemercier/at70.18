@@ -1,8 +1,11 @@
 package com.example.donutondemand.converter;
 
 import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 
 import com.example.donutondemand.model.Cooking;
+
+@Converter(autoApply=true)
 
 public class CookingJpaConverter implements AttributeConverter<Cooking, String> {
 	

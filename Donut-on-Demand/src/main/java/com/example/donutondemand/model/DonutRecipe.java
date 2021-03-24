@@ -1,13 +1,17 @@
 package com.example.donutondemand.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Convert;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.example.donutondemand.converter.CookingJpaConverter;
 import com.example.donutondemand.converter.DoughJpaConverter;
@@ -54,6 +58,9 @@ public class DonutRecipe {
     
 	@Column(nullable = false)
     private double price;
+	
+	@OneToMany(mappedBy = "donut")
+	private Set<OrderLine> orderLines;
 	
 	
 }

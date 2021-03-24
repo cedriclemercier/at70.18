@@ -1,9 +1,11 @@
 package com.example.donutondemand.converter;
 
 import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 
 import com.example.donutondemand.model.Topping;
 
+@Converter(autoApply=true)
 public class ToppingJpaConverter implements AttributeConverter<Topping, String> {
 	
 	   @Override

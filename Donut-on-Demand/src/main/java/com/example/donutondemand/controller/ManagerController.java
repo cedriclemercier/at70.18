@@ -1,8 +1,8 @@
 package com.example.donutondemand.controller;
 
+import java.security.Principal;
 import java.time.LocalDate;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,19 +31,20 @@ public class ManagerController {
 	@RequestMapping(path = "/createEmployee", method=RequestMethod.GET)
 	public String create(Model model) {
 		model.addAttribute("employee", new Employee());
-		System.out.println("YESSSS");
 		return "createEmployee.jsp";
 	}
 	
 	@RequestMapping(path = "/createEmployee", method=RequestMethod.POST)
 	public String createEmployee( @ModelAttribute("employee") Employee employee,
-			BindingResult bindingResult) {
+			BindingResult bindingResult, Principal principal) {
 		employeeValidator.validate(employee, bindingResult);
 		
 		if (bindingResult.hasErrors()) {
             return "createEmployee.jsp";
         }
 		
+		Employee manager = employeeService.findByUsername(principal.getName());
+		employee.setShopE(manager.getShopE());
 		employeeService.save(employee);
 		
 		return "createEmployee.jsp";

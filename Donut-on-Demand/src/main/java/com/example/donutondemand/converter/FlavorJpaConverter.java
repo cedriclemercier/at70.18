@@ -1,9 +1,11 @@
 package com.example.donutondemand.converter;
 
 import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 
 import com.example.donutondemand.model.Flavor;
 
+@Converter(autoApply=true)
 public class FlavorJpaConverter implements AttributeConverter<Flavor, String> {
 	
 	   @Override

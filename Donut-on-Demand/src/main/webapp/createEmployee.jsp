@@ -50,14 +50,14 @@
 		<spring:bind path="role">
 			<div>
 				Roles :<br/>
-				<form:radiobutton path="role" value="1" />
+				<form:radiobutton path="role" value="0" />
 				ROLE_MANAGER<br/>
+				
+				<form:radiobutton path="role" value="1" />
+				ROLE_ORDER_SUPERVISOR<br/>
 				
 				<form:radiobutton path="role" value="2" />
 				ROLE_CASHIER<br/>
-				
-				<form:radiobutton path="role" value="3" />
-				ROLE_ORDER_SUPERVISOR<br/>
 				
 			</div>
 		</spring:bind>
