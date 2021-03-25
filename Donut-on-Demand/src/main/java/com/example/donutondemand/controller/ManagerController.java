@@ -47,7 +47,7 @@ public class ManagerController {
 		employee.setShopE(manager.getShopE());
 		employeeService.save(employee);
 		
-		return "createEmployee.jsp";
+		return "redirect:/homeEmployee";
 	}
 	
 }

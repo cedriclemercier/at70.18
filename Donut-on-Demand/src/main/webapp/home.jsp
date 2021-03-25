@@ -13,6 +13,6 @@
 	
 	<h2>  </h2>
 	
-	<a href="/order"> I want to Order ! </a>
+	<a href="/donutList"> I want to Order ! </a>
 </body>
 </html>

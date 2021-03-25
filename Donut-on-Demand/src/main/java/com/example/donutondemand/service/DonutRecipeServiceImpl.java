@@ -2,6 +2,7 @@ package com.example.donutondemand.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,11 @@ public class DonutRecipeServiceImpl implements DonutRecipeService{
 	@Override
 	public List<DonutRecipe> findAllDonuts() {
 		return donutDao.findAll();
+	}
+
+	@Override
+	public DonutRecipe findById(int id) {
+		return donutDao.findById(id).orElse(new DonutRecipe());
 	}
 
 }

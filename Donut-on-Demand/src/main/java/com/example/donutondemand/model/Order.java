@@ -29,9 +29,12 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Setter
+@Getter
 @Table(name = "orders")
 public class Order {
 	
@@ -56,7 +59,7 @@ public class Order {
 
 	@OneToMany(mappedBy = "order")
 	@JsonManagedReference
-	private Set<OrderLine> orderLines;
+	private Set<OrderLine> orderlines;
 		
 	@Column(nullable = false)
 	@Convert(converter = LocalDateTimeJpaConverter.class)
