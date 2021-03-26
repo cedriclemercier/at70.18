@@ -27,5 +27,6 @@ Look the milestones in the repository
 
 ## Progress
 * 26/02/2021 - Project requirements and UI mockups
+* 26/03/2021 - Architectural Design Documents
 
 Look the milestones in the repository
