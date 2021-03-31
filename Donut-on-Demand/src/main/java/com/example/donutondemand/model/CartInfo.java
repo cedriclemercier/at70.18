@@ -1,12 +1,13 @@
 package com.example.donutondemand.model;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class CartInfo {
 	private int orderNum;
 	  
-	private Customer customerInfo;
+	private OrderInfo orderInfo;
 	
     private final List<CartLineInfo> cartLines = new ArrayList<CartLineInfo>();
  
@@ -22,12 +23,12 @@ public class CartInfo {
         this.orderNum = orderNum;
     }
  
-    public Customer getCustomerInfo() {
-        return customerInfo;
+    public OrderInfo getOrderInfo() {
+        return orderInfo;
     }
  
-    public void setCustomerInfo(Customer customerInfo) {
-        this.customerInfo = customerInfo;
+    public void setOrderInfo(OrderInfo orderInfo) {
+        this.orderInfo = orderInfo;
     }
  
     public List<CartLineInfo> getCartLines() {
@@ -60,9 +61,6 @@ public class CartInfo {
         }
     }
  
-    public void validate() {
- 
-    }
  
     public void updateDonut(int id, int quantity) {
         CartLineInfo line = this.findLineById(id);
@@ -87,9 +85,9 @@ public class CartInfo {
         return this.cartLines.isEmpty();
     }
  
-    /*public boolean isValidCustomer() {
-        return this.customerInfo != null && this.customerInfo.isValid();
-    }*/
+    public boolean isValidOrder() {
+        return this.orderInfo != null && this.orderInfo.isValid();
+    }
  
     public int getQuantityTotal() {
         int quantity = 0;
@@ -116,4 +114,7 @@ public class CartInfo {
         }
  
     }
+    
+    
+    
 }

@@ -4,6 +4,7 @@ import java.time.LocalTime;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Embedded;
@@ -50,8 +51,10 @@ public class Shop {
     @JsonManagedReference
     private Set<Employee> employees;
     
-    @OneToMany(mappedBy = "shopO", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "shopO",  fetch=FetchType.LAZY)
     @JsonManagedReference
     private Set<Order> purchasedOrders;
+    
+    
 	
 }

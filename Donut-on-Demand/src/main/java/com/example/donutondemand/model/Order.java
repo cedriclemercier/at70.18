@@ -1,13 +1,13 @@
 package com.example.donutondemand.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -23,12 +23,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.example.donutondemand.converter.LocalDateTimeJpaConverter;
+import com.example.donutondemand.converter.LocalDateJpaConverter;
+import com.example.donutondemand.converter.LocalTimeJpaConverter;
 import com.example.donutondemand.converter.StatusJpaConverter;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,31 +43,36 @@ public class Order {
 	private int id;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="order_id", nullable=false)
+	//@JoinColumn(name="shop_id", nullable=false)
 	@JsonBackReference 
 	private Shop shopO;
 	
 	@Column(nullable = false)
 	@Embedded
 	@AttributeOverrides({
-		  @AttributeOverride( name = "firstName", column = @Column(name = "customer_first_name")),
-		  @AttributeOverride( name = "lastName", column = @Column(name = "customer_last_name")),
+		  @AttributeOverride( name = "firstname", column = @Column(name = "customer_first_name")),
+		  @AttributeOverride( name = "lastname", column = @Column(name = "customer_last_name")),
 		  @AttributeOverride( name = "email", column = @Column(name = "customer_email")),
 		  @AttributeOverride( name = "phone", column = @Column(name = "customer_phone"))
 		})
 	private Customer customer;
 
-	@OneToMany(mappedBy = "order")
+	@OneToMany(mappedBy = "order",  cascade = {CascadeType.ALL })
 	@JsonManagedReference
 	private Set<OrderLine> orderlines;
 		
 	@Column(nullable = false)
-	@Convert(converter = LocalDateTimeJpaConverter.class)
-    private LocalDateTime pickUpDateTime;
+	@Convert(converter = LocalTimeJpaConverter.class)
+    private LocalTime pickUpTime;
     
+	
+	@Column(nullable = false)
+	@Convert(converter = LocalDateJpaConverter.class)
+    private LocalDate pickUpDate;
+	
     @Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	@Convert(converter = StatusJpaConverter.class)
     private Status status;
-	
+    
 }
