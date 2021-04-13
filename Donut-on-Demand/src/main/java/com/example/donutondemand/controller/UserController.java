@@ -159,7 +159,7 @@ public class UserController {
         // If has Errors.
         if (result.hasErrors()) {
         	orderInfo.setValid(false);
-            return "shoppingCartCustomer.jsp";
+            return "redirect:/shoppingCartCustomer";
         }
         
         orderInfo.setValid(true);
