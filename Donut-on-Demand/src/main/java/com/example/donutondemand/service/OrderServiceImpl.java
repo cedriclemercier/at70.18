@@ -3,6 +3,7 @@ package com.example.donutondemand.service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
+import com.example.donutondemand.dao.OrderDao;
 import com.example.donutondemand.dao.OrderJPADao;
 import com.example.donutondemand.model.CartInfo;
 import com.example.donutondemand.model.CartLineInfo;
@@ -26,7 +28,10 @@ public class OrderServiceImpl implements OrderService{
 
 	
 	@Autowired
-	OrderJPADao orderDao;
+	OrderJPADao orderJPADao;
+	
+	@Autowired
+	OrderDao orderDao;
 	
 	@Autowired
 	EmailService emailService;
@@ -73,10 +78,9 @@ public class OrderServiceImpl implements OrderService{
 		newOrder.setPickUpTime(LocalTime.parse(orderInfo.getPickUpTime() + ":00"));;
 		
 		try {
-			orderDao.save(newOrder);
+			orderJPADao.save(newOrder);
 		} catch (Exception ex) {
 			System.err.println(ex.getMessage());
-			System.out.println("TETSTSTSTSTSTSTS");
 		}
 		
 		
@@ -93,6 +97,17 @@ public class OrderServiceImpl implements OrderService{
 			System.err.println(ex.getMessage());
 		}
 		
+	}
+
+	@Override
+	public List<Order> findOrdersToPrepare(int shopId) {
+		return orderDao.findOrdersToPrepare(shopId);
+	}
+
+	@Override
+	public List<Order> findOrdersReady() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

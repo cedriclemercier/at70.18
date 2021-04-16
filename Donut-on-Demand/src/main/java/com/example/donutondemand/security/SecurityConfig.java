@@ -41,6 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 						"/addDonut/**", "/shoppingCart", "/shoppingCartRemoveProduct", 
 						"/shoppingCartCustomer", "/shoppingCartConfirmation", "/shoppingCartFinalize").permitAll()
 				.antMatchers("/createEmployee").hasRole("MANAGER")
+				.antMatchers("/manageOrdersPicking").hasRole("ORDER_SUPERVISOR")
+				.antMatchers("/manageOrdersWithdrawn").hasRole("CASHIER")
 				.antMatchers("/**").hasAnyRole("MANAGER","CASHIER", "ORDER_SUPERVISOR")
 			.and()
 			.formLogin()

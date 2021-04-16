@@ -33,6 +33,15 @@
 		</table>
 	 <a href="/createEmployee"> Create new employee account </a>
 	</sec:authorize>
+	
+	<sec:authorize access="hasRole('ORDER_SUPERVISOR')">
+		
+	 <a href="/manageOrdersPicking"> Manage orders picking </a>
+	</sec:authorize>
+	
+	<sec:authorize access="hasRole('CASHIER')">
+	 <a href="/manageOrdersWithdrawn"> Manage orders withdrawn </a>
+	</sec:authorize>
 
 	<a href="/logout">Logout</a>
 </body>

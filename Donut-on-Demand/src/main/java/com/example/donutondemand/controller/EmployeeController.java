@@ -5,12 +5,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.donutondemand.model.Employee;
+import com.example.donutondemand.model.Order;
 import com.example.donutondemand.service.EmployeeService;
+import com.example.donutondemand.service.OrderService;
 
 
 @Controller
@@ -18,6 +21,9 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeService employeeService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	@RequestMapping(path = "/homeEmployee")
 	public ModelAndView employeeDashboard(Principal principal) {
@@ -52,4 +58,27 @@ public class EmployeeController {
 	public String logout() {
 		return "logout.jsp";
 	}
+	
+	
+	@RequestMapping(path = "/manageOrdersPicking", method = RequestMethod.GET)
+	public ModelAndView manageOrdersPicking(Principal principal) {
+		ModelAndView mv = new ModelAndView("manageOrdersPicking.jsp");
+		
+		Employee e = employeeService.findByUsername(principal.getName());
+		System.out.println(e.getShopE().getId());
+		List<Order> orders = orderService.findOrdersToPrepare(e.getShopE().getId());
+		System.out.println(orders.get(0));
+		mv.addObject("orders",orders);
+		
+		return mv;
+	}
+	
+	@RequestMapping(path = "/manageOrdersWithdrawn", method=RequestMethod.GET)
+	public ModelAndView manageOrdersWithdrawn() {
+		ModelAndView mv = new ModelAndView("manageOrdersWithdrawn.jsp");
+		
+		return mv;
+	}
+	
+	
 }
