@@ -118,4 +118,17 @@ public class OrderServiceImpl implements OrderService{
 		orderJPADao.save(o);
 	}
 
+	@Override
+	public List<Order> findOrdersReady(int shopId) {
+		// TODO Auto-generated method stub
+		return orderDao.findOrdersReady(shopId);
+	}
+
+	@Override
+	public void changeOrderStatus2(int id) {
+		Order o = orderJPADao.getOne(id);
+		o.setStatus(Status.WITHDRAWN);
+		orderJPADao.save(o);	
+	}
+
 }

@@ -11,4 +11,7 @@ public interface OrderDao extends CrudRepository<Order, Integer>{
 
 	@Query("from Order where shopo_id = ?1 AND status = 'PROCESSING' order by pick_up_date, pick_up_time")
 	List<Order> findOrdersToPrepare(int shopo_id);
+
+	@Query("from Order where shopo_id = ?1 AND status = 'READY' order by pick_up_date, pick_up_time")
+	List<Order> findOrdersReady(int shopo_id);
 }

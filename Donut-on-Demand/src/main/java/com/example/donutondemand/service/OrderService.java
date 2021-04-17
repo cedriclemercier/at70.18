@@ -10,4 +10,6 @@ public interface OrderService {
 	List<Order> findOrdersToPrepare(int shopId);
 	List<Order> findOrdersReady();
 	void changeOrderStatus(int id);
+	List<Order> findOrdersReady(int shopId);
+	void changeOrderStatus2(int id);
 }

@@ -82,11 +82,21 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(path = "/manageOrdersWithdrawn", method=RequestMethod.GET)
-	public ModelAndView manageOrdersWithdrawn() {
+	public ModelAndView manageOrdersWithdrawn(Principal principal) {
 		ModelAndView mv = new ModelAndView("manageOrdersWithdrawn.jsp");
 		
+		Employee e = employeeService.findByUsername(principal.getName());
+		
+		List<Order> orders = orderService.findOrdersReady(e.getShopE().getId());
+		mv.addObject("orders",orders);
 		return mv;
 	}
 	
+	@RequestMapping({ "/changeOrderStatus2" })
+	public String changeOrderStatus2( @RequestParam(value = "id", defaultValue = "") int id) {
+		orderService.changeOrderStatus2(id);
+		
+		return "redirect:/manageOrdersWithdrawn";
+	}
 	
 }
