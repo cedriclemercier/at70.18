@@ -9,4 +9,5 @@ public interface OrderService {
 	void save(CartInfo cart);
 	List<Order> findOrdersToPrepare(int shopId);
 	List<Order> findOrdersReady();
+	void changeOrderStatus(int id);
 }

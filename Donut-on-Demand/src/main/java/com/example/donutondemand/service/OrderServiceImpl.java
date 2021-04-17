@@ -110,4 +110,12 @@ public class OrderServiceImpl implements OrderService{
 		return null;
 	}
 
+	@Override
+	public void changeOrderStatus(int id) {
+		
+		Order o = orderJPADao.getOne(id);
+		o.setStatus(Status.READY);
+		orderJPADao.save(o);
+	}
+
 }

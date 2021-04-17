@@ -17,6 +17,7 @@
 		    <th>Customer email</th>
 		    <th>Pick up date</th>
 		    <th>Pick up time</th>
+		    <th>Order is </th>
 		</tr>
 		<c:forEach items="${orders}" var="o">
 			  <tr>
@@ -26,6 +27,8 @@
 			    <td>${o.customer.email}</td>
 			    <td>${o.pickUpDate}</td>
 			    <td>${o.pickUpTime}</td>
+			    <td><a href="/changeOrderStatus?id=${o.id}">
+                       READY</a></td>
 			  </tr>
 		</c:forEach>
 		</table>

@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.donutondemand.model.Employee;
@@ -65,12 +67,18 @@ public class EmployeeController {
 		ModelAndView mv = new ModelAndView("manageOrdersPicking.jsp");
 		
 		Employee e = employeeService.findByUsername(principal.getName());
-		System.out.println(e.getShopE().getId());
+		
 		List<Order> orders = orderService.findOrdersToPrepare(e.getShopE().getId());
-		System.out.println(orders.get(0));
 		mv.addObject("orders",orders);
 		
 		return mv;
+	}
+	
+	@RequestMapping({ "/changeOrderStatus" })
+	public String changeOrderStatus( @RequestParam(value = "id", defaultValue = "") int id) {
+		orderService.changeOrderStatus(id);
+		
+		return "redirect:/manageOrdersPicking";
 	}
 	
 	@RequestMapping(path = "/manageOrdersWithdrawn", method=RequestMethod.GET)
