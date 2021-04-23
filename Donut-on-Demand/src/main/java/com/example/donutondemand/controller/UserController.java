@@ -45,7 +45,7 @@ public class UserController {
 	@Autowired
 	private OrderService orderService;
 	
-	@RequestMapping(path = "/home")
+	@RequestMapping(path = {"", "/home"})
 	public String home() {
 		return "home.jsp";
 	}

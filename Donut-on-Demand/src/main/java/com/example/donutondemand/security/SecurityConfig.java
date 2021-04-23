@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.authorizeRequests()
 				.antMatchers("/h2-console/**", "/home", "/login", "/donutList",
 						"/addDonut/**", "/shoppingCart", "/shoppingCartRemoveProduct", 
-						"/shoppingCartCustomer", "/shoppingCartConfirmation", "/shoppingCartFinalize").permitAll()
+						"/shoppingCartCustomer", "/shoppingCartConfirmation", "/shoppingCartFinalize", "/css/**", "/images/**").permitAll()
 				.antMatchers("/createEmployee").hasRole("MANAGER")
 				.antMatchers("/manageOrdersPicking").hasRole("ORDER_SUPERVISOR")
 				.antMatchers("/manageOrdersWithdrawn").hasRole("CASHIER")

@@ -52,8 +52,9 @@ public class EmployeeController {
 	
 	
 	@RequestMapping(path = "/login")
-	public String login() {
-		return "loginEmployee.jsp";
+	public ModelAndView login() {
+		ModelAndView mv = new ModelAndView("loginEmployee.jsp");
+		return mv;
 	}
 	
 	@RequestMapping(path = "/logout-success")
