@@ -1,8 +1,12 @@
 package com.example.donutondemand.controller;
 
 import java.security.Principal;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,9 +28,11 @@ import com.example.donutondemand.model.Employee;
 import com.example.donutondemand.model.Flavor;
 import com.example.donutondemand.model.Mix;
 import com.example.donutondemand.model.OrderInfo;
+import com.example.donutondemand.model.OrderLine;
 import com.example.donutondemand.model.Topping;
 import com.example.donutondemand.service.DonutRecipeService;
 import com.example.donutondemand.service.EmployeeService;
+import com.example.donutondemand.service.OrderLineService;
 import com.example.donutondemand.util.Utils;
 import com.example.donutondemand.validation.EmployeeValidator;
 
@@ -44,6 +50,9 @@ public class ManagerController {
 	
 	@Autowired
 	private DonutRecipeService donutService;
+	
+	@Autowired
+	private OrderLineService orderlineService;
 	
 	@RequestMapping(path = "/createEmployee", method=RequestMethod.GET)
 	public String create(Model model) {
@@ -105,4 +114,42 @@ public class ManagerController {
 	
 		return "redirect:/addDonutRecipee";
 	}
+	
+	@RequestMapping(path = "/getStatistics", method=RequestMethod.GET)
+	public ModelAndView getStatistics(Model model) {		
+		ModelAndView mv = new ModelAndView("statistics.jsp");
+		
+		List<DonutRecipe> donuts = donutService.findAllDonuts();
+		
+		Map<String, List<Double>> donutsStats = new HashMap<String, List<Double>>();
+		double totalNbOrderLines = 0.;
+		for(DonutRecipe donut : donuts) {
+			
+			List<OrderLine> ols = orderlineService.findOrderlinesByDonutRecipeId(donut.getId());
+			double nbSales =0.;
+			
+			for(OrderLine ol : ols) {
+				nbSales+=ol.getQuantity();
+			}
+			
+			List<Double> savePercentage = new ArrayList<>(); 
+			savePercentage.add(nbSales);
+			donutsStats.put(donut.getName(), savePercentage);
+			totalNbOrderLines+=nbSales;
+		}
+		
+		mv.addObject("donutsMap" , donutsStats);
+		mv.addObject("totalNbOrderLines", totalNbOrderLines);
+		
+		for (Map.Entry<String, List<Double>> entry : donutsStats.entrySet()) {
+			double percentage = (entry.getValue().get(0)*100)/totalNbOrderLines;
+			percentage=(double) Math.round(percentage * 100) / 100;
+			entry.getValue().add(percentage);
+		}
+	       
+		
+		return mv;
+	}
+	
+	
 }
