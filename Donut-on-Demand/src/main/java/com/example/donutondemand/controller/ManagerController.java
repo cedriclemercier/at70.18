@@ -2,7 +2,9 @@ package com.example.donutondemand.controller;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +13,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.example.donutondemand.model.CartInfo;
+import com.example.donutondemand.model.DonutRecipe;
 import com.example.donutondemand.model.Employee;
+import com.example.donutondemand.model.OrderInfo;
+import com.example.donutondemand.service.DonutRecipeService;
 import com.example.donutondemand.service.EmployeeService;
+import com.example.donutondemand.util.Utils;
 import com.example.donutondemand.validation.EmployeeValidator;
 
 
@@ -27,6 +36,9 @@ public class ManagerController {
 	
 	@Autowired
 	private EmployeeValidator employeeValidator;
+	
+	@Autowired
+	private DonutRecipeService donutService;
 	
 	@RequestMapping(path = "/createEmployee", method=RequestMethod.GET)
 	public String create(Model model) {
@@ -50,4 +62,38 @@ public class ManagerController {
 		return "redirect:/homeEmployee";
 	}
 	
+	
+	@RequestMapping(path = "/addDonutRecipee", method=RequestMethod.GET)
+	public ModelAndView donutRecipee(Model model) {
+		model.addAttribute("newDonutRecipee", new DonutRecipe());
+		
+		ModelAndView mv = new ModelAndView("addRecipee.jsp");
+		List<DonutRecipe> donuts = donutService.findAllDonuts();
+		mv.addObject("donuts" , donuts);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = { "/addDonutRecipee" }, method = RequestMethod.POST)
+    public String addDonutRecipee(@ModelAttribute("newDonutRecipee") DonutRecipe donutRecipe) {
+  
+    	double price = donutRecipe.getDough().getPrice() + donutRecipe.getFlavor().getPrice() 
+    			+ donutRecipe.getTopping().getPrice();
+    	
+    	donutRecipe.setPrice(price);
+    	
+    	donutService.addDonutRecipe(donutRecipe);
+        // Redirect to Confirmation page.
+        return "redirect:/addDonutRecipee";
+    }
+
+	
+	@RequestMapping({ "/deleteDonutRecipee" })
+    public String deleteDonutRecipee(HttpServletRequest request, Model model,
+    		@RequestParam(value = "id", defaultValue = "") int id) {
+		
+		donutService.deleteDonut(id);
+	
+		return "redirect:/addDonutRecipee";
+	}
 }

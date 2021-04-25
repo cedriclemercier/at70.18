@@ -64,7 +64,7 @@ public class DonutRecipe {
 	@Column(nullable = false)
     private double price;
 	
-	@OneToMany(mappedBy = "donut")
+	@OneToMany(mappedBy = "donut",  cascade = {CascadeType.ALL })
 	@JsonManagedReference
 	private Set<OrderLine> orderLines;
 	

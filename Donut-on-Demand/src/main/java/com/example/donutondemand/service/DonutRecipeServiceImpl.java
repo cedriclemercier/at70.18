@@ -25,4 +25,17 @@ public class DonutRecipeServiceImpl implements DonutRecipeService{
 		return donutDao.findById(id).orElse(new DonutRecipe());
 	}
 
+	@Override
+	public void deleteDonut(int id) {
+		
+		donutDao.deleteById(id);
+		
+	}
+
+	@Override
+	public void addDonutRecipe(DonutRecipe donutRecipe) {
+		
+		donutDao.save(donutRecipe);
+	}
+
 }
