@@ -17,9 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.donutondemand.model.CartInfo;
+import com.example.donutondemand.model.Cooking;
 import com.example.donutondemand.model.DonutRecipe;
+import com.example.donutondemand.model.Dough;
 import com.example.donutondemand.model.Employee;
+import com.example.donutondemand.model.Flavor;
+import com.example.donutondemand.model.Mix;
 import com.example.donutondemand.model.OrderInfo;
+import com.example.donutondemand.model.Topping;
 import com.example.donutondemand.service.DonutRecipeService;
 import com.example.donutondemand.service.EmployeeService;
 import com.example.donutondemand.util.Utils;
@@ -70,7 +75,11 @@ public class ManagerController {
 		ModelAndView mv = new ModelAndView("addRecipee.jsp");
 		List<DonutRecipe> donuts = donutService.findAllDonuts();
 		mv.addObject("donuts" , donuts);
-		
+		mv.addObject("cookings", Cooking.values());
+		mv.addObject("mixs", Mix.values());
+		mv.addObject("doughs", Dough.values());
+		mv.addObject("flavors", Flavor.values());
+		mv.addObject("toppings", Topping.values());
 		return mv;
 	}
 	
