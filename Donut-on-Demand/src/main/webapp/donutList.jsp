@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-   
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -127,9 +126,9 @@
 
   <!-- shop section -->
 
-  <section class="shop_section layout_padding">
+  <section class="fruit_section layout_padding">
     <div class="container">
-      <div class="box">
+      <div class="box hidden">
 		<h2> Donut Recipes Available : </h2>
 	
 		<table>
@@ -166,13 +165,60 @@
 		</c:forEach>
 		
 		</table>
-    <sec:authorize access="hasRole('MANAGER')">
-
-      <div class="btn-box">
-                <a href="/addDonutRecipee" id="add-recipe">Add New Recipe</a>
-              </div>
-    </sec:authorize>
+    
       </div>
+
+      <div>
+        <div class="col-md-6 md-offset-3">
+          <div style="padding: 10px 0">
+            <sec:authorize access="hasRole('MANAGER')">
+            <div class="btn-box">
+              <a href="/addDonutRecipee" id="add-recipe">Add New Recipe</a>
+            </div>
+          </sec:authorize>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="fruit_container">
+
+          <c:forEach items="${donuts}" var="donut">
+  
+          <div class="box">
+            <div class="donut-box">
+              <img src="${donut.imageUrl}" />
+              <div class="donut-box-description">
+                <h3 style="margin-top: 10px;">${donut.name}</h3>
+                <ul>
+                  <li><strong>Dough: </strong>${donut.dough}</li>
+                  <li><strong>Flavour: </strong>${donut.flavor}</li>
+                  <li><strong>Topping: </strong>${donut.topping}</li>
+                  <li><strong>Cooking: </strong>${donut.cooking}</li>
+                  <li><strong>Mix: </strong>${donut.mix}</li>
+                  <br/>
+                  <li><strong style="font-size:18px;">PRICE: ${donut.price} $</strong></li>
+                </ul>
+                <br>
+                <div class="btn-box">
+                  <a href="/addDonut?id=${donut.id}">Add Now</a>
+                </div>
+                <br />
+                <sec:authorize access="hasRole('MANAGER')">
+                  <div class="btn-box">
+                    <a href="/deleteDonutRecipee?id=${donut.id}">Delete</a>
+                  </div>
+                  <br/>
+                </sec:authorize>
+              </div>
+            </div>
+  
+          </div>
+        </c:forEach>
+        </div>
+
+      </div>
+
+
     </div>
   </section>
 

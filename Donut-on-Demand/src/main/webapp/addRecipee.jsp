@@ -209,6 +209,14 @@
 			</spring:bind>
 
 			<br />
+
+			<spring:bind path="imageUrl">
+			<div>
+			<form:input type="text" path="imageUrl" class="form-control" placeholder="Image URL e.g 'https://i.ibb.co/c1pCwbz/5.jpg'" autofocus="true"></form:input>
+			</div>
+			</spring:bind>
+
+			<br />
 			
 			Dough :
 			<form:select name="dough" path="dough">
@@ -234,6 +242,7 @@
 			<form:select path="cooking">
    				<form:options items="${cookings}"  />
 			</form:select>
+			<br />
 			<br />
 			
 			<Input type="submit" name="submit" value="submit">

@@ -207,7 +207,7 @@ a:focus {
   margin-top: 25px;
 }
 
-.shop_section .box .btn-box a {
+.shop_section .box .btn-box a, .fruit_section .box .btn-box a, .fruit_section .btn-box a {
   display: inline-block;
   padding: 8px 40px;
   background-color: #313131;
@@ -736,4 +736,22 @@ margin: 4px;
 background-color: #313131;
 border: 1px solid #313131;
 color: #ffffff;
+}
+
+.donut-box-description {
+  padding: 10px;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+.donut-box-description ul {
+  padding: 0;
+}
+
+.donut-box-description ul li {
+  list-style: none;
+}
+
+.hidden {
+  display: none;
 }

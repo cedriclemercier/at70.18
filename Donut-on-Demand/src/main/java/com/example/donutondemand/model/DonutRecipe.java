@@ -32,6 +32,9 @@ public class DonutRecipe {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
+	@Column
+	private String imageUrl;
 	
 	@Column(nullable = false)
 	private String name;
