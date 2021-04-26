@@ -91,7 +91,7 @@
             <div class="d-flex  flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/" id="go-home">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/donutList">Doughnuts </a>
@@ -142,6 +142,9 @@
 		    <th>Mix</th>
 		    <th>Price</th>
 		    <th>Add to my order</th>
+        <sec:authorize access="hasRole('MANAGER')">
+          <th>Actions</th>
+        </sec:authorize>
 		</tr>
 		<c:forEach items="${donuts}" var="donut">
 			  <tr>
@@ -153,15 +156,22 @@
 			    <td>${donut.mix}</td>
 			    <td>${donut.price}</td>
 			    <td>
-			    
-			    <a
-                   href="/addDonut?id=${donut.id}">
-                       Add Now</a></td>
+			      <a href="/addDonut?id=${donut.id}">Add Now</a>
+        </td>
+          <sec:authorize access="hasRole('MANAGER')">
+          <td><a href="/deleteDonutRecipee?id=${donut.id}">Delete</a></td>
+        </sec:authorize>
 			  </tr>
 			  
 		</c:forEach>
 		
 		</table>
+    <sec:authorize access="hasRole('MANAGER')">
+
+      <div class="btn-box">
+                <a href="/addDonutRecipee" id="add-recipe">Add New Recipe</a>
+              </div>
+    </sec:authorize>
       </div>
     </div>
   </section>

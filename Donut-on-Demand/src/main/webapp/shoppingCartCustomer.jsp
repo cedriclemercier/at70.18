@@ -90,7 +90,7 @@ pageEncoding="UTF-8"%>
             <div class="d-flex  flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/" id="go-home">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/donutList">Doughnuts </a>
@@ -202,7 +202,7 @@ pageEncoding="UTF-8"%>
 			
            <tr>
                <td>&nbsp;</td>
-               <td><input type="submit" value="Validate" /> </td>
+               <td><input type="submit" value="Validate" id="submitOrderInfo" /> </td>
            </tr>
        </table>
  

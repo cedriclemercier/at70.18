@@ -88,7 +88,7 @@
             <div class="d-flex  flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/" id="go-home">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/donutList">Doughnuts </a>
@@ -133,7 +133,7 @@
 
 	<h3>Your Role is : </h3>
 		
-	<span> ${employee.role.getName()} </span><br>
+	<span name="user_role"> ${employee.role.getName()} </span><br>
 	
 	<sec:authorize access="hasRole('MANAGER')">
 		<h2>Employee list </h2>
@@ -150,9 +150,12 @@
 		</c:forEach>
 		</table>
     <div class="btn-box">
-
-      <a href="/createEmployee"> Create new employee account </a>
+      <a href="/createEmployee" id="create-employee">Create new employee account</a>
     </div>
+    <br/>
+    <div class="btn-box">
+          <a href="/getStatistics" id="getStatistics">Statistics</a>
+        </div>
 	</sec:authorize>
 	
 	<sec:authorize access="hasRole('ORDER_SUPERVISOR')">

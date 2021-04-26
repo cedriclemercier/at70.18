@@ -18,7 +18,7 @@ uri="http://www.springframework.org/security/tags" %>
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Log in</title>
+    <title>Home - Log in</title>
 
     <!-- slider stylesheet -->
     <link
@@ -117,8 +117,7 @@ uri="http://www.springframework.org/security/tags" %>
               <div class="d-flex flex-column flex-lg-row align-items-center">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="nav-link" href="/"
-                      >Home <span class="sr-only">(current)</span></a
+                    <a class="nav-link" href="/" id="go-home">Home <span class="sr-only">(current)</span></a
                     >
                   </li>
                   <li class="nav-item">
