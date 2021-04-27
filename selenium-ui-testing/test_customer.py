@@ -41,18 +41,18 @@ class DonutTCNavigation(unittest.TestCase):
         self.driver.close()
         
         
-# class CustomerBasicNavigation(unittest.TestCase):
-#     def setUp(self):
-#         self.driver = webdriver.Chrome(CHROME_DRIVER_DIRECTORY)
-#         self.driver.get(BASE_URL)
+class CustomerBasicNavigation(unittest.TestCase):
+    def setUp(self):
+        self.driver = webdriver.Chrome(CHROME_DRIVER_DIRECTORY)
+        self.driver.get(BASE_URL)
         
-#     def test_access_restricted_pages(self):
-#         print("Accessing common pages as customer...")
-#         mainPage = page.MainPage(self.driver)
-#         mainPage.browse_basic_pages()
+    def test_access_restricted_pages(self):
+        print("Accessing common pages as customer...")
+        mainPage = page.MainPage(self.driver)
+        mainPage.browse_basic_pages()
         
-#     def tearDown(self):
-#         self.driver.close()
+    def tearDown(self):
+        self.driver.close()
         
         
 if __name__ == "__main__":
