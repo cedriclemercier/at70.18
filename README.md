@@ -1,6 +1,11 @@
 # Donut Shop
 Group project repository for "DONUT SHOP" Project
 
+## Project repo structure
+* `/Deliverables` : Folder containing up-to-date scientific report, testing document, presentation file and software architecture document
+* `/Donut-on-Demand` : Codebase of our app in Spring Boot
+* `/selenium-ui-testing` : Codebase for selenium UI testing in Python
+
 ## Team member names
 * Cedric Le Mercier - st122004
 * Titouan Le Mao - st122014

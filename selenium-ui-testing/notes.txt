@@ -1,0 +1,6 @@
+
+# get page source data
+print(driver.page_source)
+
+# to close tab
+driver.close()

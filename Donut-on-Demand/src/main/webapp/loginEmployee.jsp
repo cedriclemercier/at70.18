@@ -18,7 +18,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Employee Home</title>
+    <title>Login Employee</title>
 
     <!-- slider stylesheet -->
     <link
