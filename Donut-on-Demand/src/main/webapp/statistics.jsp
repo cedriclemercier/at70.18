@@ -171,7 +171,7 @@
 								Donut : <c:out value="${entry.key}"/><br>
 								Number of sales : <c:out value="${entry.value.get(0)}"/><br>
 								Percentage of sales : <c:out value="${entry.value.get(1)}"/>%
-							  </li>
+							  </li><br><br>
 								 
 				   </c:forEach>
 				</ul>

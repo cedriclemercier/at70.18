@@ -2,7 +2,6 @@ package com.example.donutondemand.controller;
 
 import java.security.Principal;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,20 +19,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.donutondemand.model.CartInfo;
 import com.example.donutondemand.model.Cooking;
 import com.example.donutondemand.model.DonutRecipe;
 import com.example.donutondemand.model.Dough;
 import com.example.donutondemand.model.Employee;
 import com.example.donutondemand.model.Flavor;
 import com.example.donutondemand.model.Mix;
-import com.example.donutondemand.model.OrderInfo;
 import com.example.donutondemand.model.OrderLine;
 import com.example.donutondemand.model.Topping;
 import com.example.donutondemand.service.DonutRecipeService;
 import com.example.donutondemand.service.EmployeeService;
 import com.example.donutondemand.service.OrderLineService;
-import com.example.donutondemand.util.Utils;
 import com.example.donutondemand.validation.EmployeeValidator;
 
 
